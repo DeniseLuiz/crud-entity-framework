@@ -27,5 +27,19 @@ ________________________________________________________________________________
 PRIMARY KEY CLUSTERED([Id] ASC)
 )
 ```
+Configurações necessárias para conexão com o DB:
+> No arquivo appsettings.json:<br>
+
+```
+"ConnectionStrings": { "EmployeerDB": "Server=xxxxxx;User Id=sa;password=xxxxxx;Database=EmployeerDB;Trusted_Connection=True;"
+  }
+```
+>No arquivo Startup.cs:<br>
+```
+services.AddDbContextPool<EmployeeContext>(
+      options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings")));
+services.AddScoped<IEmployeeService, EmployeeService>();
+```
+
   
 
