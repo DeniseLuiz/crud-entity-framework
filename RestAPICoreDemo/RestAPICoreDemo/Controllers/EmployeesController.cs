@@ -37,7 +37,7 @@ namespace RestAPICoreDemo.Controllers
         public IActionResult AddEmployee(Employee employee)
         {
             _employeeService.AddEmployee(employee);
-            return Ok(employee);
+            return Created("Employee criado com sucesso.", employee); // Correto?
         }
 
         [HttpPatch]
@@ -56,7 +56,7 @@ namespace RestAPICoreDemo.Controllers
             
             if(employeeExists == null)
             {
-                return NotFound($"Employee Not Found with ID: {id}. ");
+                return NotFound($"Employee Not Found with ID: {id}.");
             }
             _employeeService.DeleEmploye(id);
             return Ok();
