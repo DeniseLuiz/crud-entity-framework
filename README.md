@@ -1,4 +1,4 @@
-#CRUD Operation with Entity Framework Core
+# CRUD Operation with Entity Framework Core
 
 > .NET Core 3.1<br>
 > Web API Application.<br>
