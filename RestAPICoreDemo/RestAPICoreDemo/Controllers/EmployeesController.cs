@@ -37,7 +37,7 @@ namespace RestAPICoreDemo.Controllers
         public IActionResult AddEmployee(Employee employee)
         {
             _employeeService.AddEmployee(employee);
-            return Ok();
+            return Ok(employee);
         }
 
         [HttpPatch]
@@ -45,7 +45,7 @@ namespace RestAPICoreDemo.Controllers
         public IActionResult UpdateEmployee(Employee employee)
         {
             _employeeService.UpdateEmployee(employee);
-            return Ok();
+            return Ok($"Funcionário {employee.FirstName} alterado com sucesso."); //Tem como verfificar o que foi alterado para colocar como parametro na string?
         }
 
         [HttpDelete]
