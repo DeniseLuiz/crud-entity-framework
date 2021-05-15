@@ -29,8 +29,8 @@ namespace RestAPICoreDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContextPool<EmployeeContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("Employeers")));
+            services.AddDbContextPool<EmployeeContext>(options =>
+                  options.UseSqlServer(Configuration.GetConnectionString("EmployeersDB")));
             services.AddScoped<IEmployeeService, EmployeeService>();
         }
 

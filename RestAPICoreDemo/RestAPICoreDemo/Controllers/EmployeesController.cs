@@ -20,9 +20,46 @@ namespace RestAPICoreDemo.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Employee> GetEmployee()
+        public IEnumerable<Employee> GetEmployees()
         {
             return _employeeService.GetEmployees();
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public Employee GetEmployeeId(int id)
+        {
+            return _employeeService.GetEmployeeId(id);
+        }
+
+        [HttpPost]
+        [Route("Add")]
+        public IActionResult AddEmployee(Employee employee)
+        {
+            _employeeService.AddEmployee(employee);
+            return Ok();
+        }
+
+        [HttpPatch]
+        [Route("Update/{id}")] //FUNCIONA???
+        public IActionResult UpdateEmployee(Employee employee)
+        {
+            _employeeService.UpdateEmployee(employee);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public IActionResult DeleteEmployee(int id)
+        {
+            var employeeExists = _employeeService.GetEmployeeId(id);
+            
+            if(employeeExists == null)
+            {
+                return NotFound($"Employee Not Found with ID: {id}. ");
+            }
+            _employeeService.DeleEmploye(id);
+            return Ok();
         }
     }
 }
