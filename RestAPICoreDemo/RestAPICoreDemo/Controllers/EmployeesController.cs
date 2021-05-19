@@ -12,9 +12,9 @@ namespace RestAPICoreDemo.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        EmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployeesController(EmployeeService employeeService)
+        public EmployeesController(IEmployeeService employeeService)
         {
             _employeeService = employeeService;
         }
@@ -56,6 +56,7 @@ namespace RestAPICoreDemo.Controllers
             
             if(employeeExists == null)
             {
+
                 return NotFound($"Employee Not Found with ID: {id}.");
             }
             _employeeService.DeleEmploye(id);
@@ -63,3 +64,4 @@ namespace RestAPICoreDemo.Controllers
         }
     }
 }
+
