@@ -37,15 +37,15 @@ namespace RestAPICoreDemo.Controllers
         public IActionResult AddEmployee(Employee employee)
         {
             _employeeService.AddEmployee(employee);
-            return Created("Employee criado com sucesso.", employee); // Correto?
+            return Created("Employee criado com sucesso.", employee); 
         }
 
         [HttpPatch]
-        [Route("Update/{id}")] //FUNCIONA???
+        [Route("Update/{id}")] 
         public IActionResult UpdateEmployee(Employee employee)
         {
             _employeeService.UpdateEmployee(employee);
-            return Ok($"Funcionário {employee.FirstName} alterado com sucesso."); //Tem como verfificar o que foi alterado para colocar como parametro na string?
+            return Ok($"Funcionário {employee.FirstName} alterado com sucesso."); //Tem como verfificar o que foi alterado para colocar como parametro na string? somente percorrendo todo o objeto
         }
 
         [HttpDelete]
