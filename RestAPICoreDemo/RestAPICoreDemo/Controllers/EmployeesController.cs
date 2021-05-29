@@ -20,46 +20,46 @@ namespace RestAPICoreDemo.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Employee> GetEmployees()
+        public IEnumerable<Employee> Get()
         {
-            return _employeeService.GetEmployees();
+            return _employeeService.Get();
         }
 
         [HttpGet]
         [Route("{id}")]
-        public Employee GetEmployeeId(int id)
+        public Employee GetId(int id)
         {
-            return _employeeService.GetEmployeeId(id);
+            return _employeeService.GetId(id);
         }
 
         [HttpPost]
         [Route("Add")]
-        public IActionResult AddEmployee(Employee employee)
+        public IActionResult Add(Employee employee)
         {
-            _employeeService.AddEmployee(employee);
+            _employeeService.Add(employee);
             return Created("Employee criado com sucesso.", employee); 
         }
 
         [HttpPatch]
         [Route("Update/{id}")] 
-        public IActionResult UpdateEmployee(Employee employee)
+        public IActionResult Update(Employee employee)
         {
-            _employeeService.UpdateEmployee(employee);
+            _employeeService.Update(employee);
             return Ok($"Funcionário {employee.FirstName} alterado com sucesso."); //Tem como verfificar o que foi alterado para colocar como parametro na string? somente percorrendo todo o objeto
         }
 
         [HttpDelete]
         [Route("Delete/{id}")]
-        public IActionResult DeleteEmployee(int id)
+        public IActionResult Delete(int id)
         {
-            var employeeExists = _employeeService.GetEmployeeId(id);
+            var employeeExists = _employeeService.GetId(id);
             
             if(employeeExists == null)
             {
 
                 return NotFound($"Employee Not Found with ID: {id}.");
             }
-            _employeeService.DeleEmploye(id);
+            _employeeService.Delete(id);
             return Ok();
         }
     }

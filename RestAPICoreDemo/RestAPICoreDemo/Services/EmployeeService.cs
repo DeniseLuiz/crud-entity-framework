@@ -15,14 +15,14 @@ namespace RestAPICoreDemo.Services
         {
             _employeeDbContext = employeeDbContext;
         }
-        public Employee AddEmployee(Employee employee)
+        public Employee Add(Employee employee)
         {
             _employeeDbContext.Employees.Add(employee);
             _employeeDbContext.SaveChanges();
             return employee;
         }
 
-        public string DeleEmploye(int id)
+        public string Delete(int id)
         {
             var employee = _employeeDbContext.Employees.FirstOrDefault(x => x.Id == id);
             
@@ -35,17 +35,17 @@ namespace RestAPICoreDemo.Services
             return "Employee Deletado com sucesso.";
         }
 
-        public Employee GetEmployeeId(int id)
+        public Employee GetId(int id)
         {
             return _employeeDbContext.Employees.Find(id);
         }
 
-        public List<Employee> GetEmployees()
+        public List<Employee> Get()
         {
             return _employeeDbContext.Employees.ToList();
         }
 
-        public void UpdateEmployee(Employee employee)
+        public void Update(Employee employee)
         {
             _employeeDbContext.Employees.Update(employee);
             _employeeDbContext.SaveChanges();

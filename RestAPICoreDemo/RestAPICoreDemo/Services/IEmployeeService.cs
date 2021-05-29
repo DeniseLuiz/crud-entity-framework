@@ -8,14 +8,14 @@ namespace RestAPICoreDemo.Services
 {
     public interface IEmployeeService
     {
-        Employee AddEmployee(Employee employee);
+        Employee Add(Employee employee);
 
-        List<Employee> GetEmployees();
+        List<Employee> Get();
 
-        void UpdateEmployee(Employee employee);
+        void Update(Employee employee);
 
-        string DeleEmploye(int id);
+        string Delete(int id);
 
-        Employee GetEmployeeId(int id);
+        Employee GetId(int id);
     }
 }
