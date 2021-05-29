@@ -34,10 +34,11 @@ Configurações necessárias para conexão com o DB:
 "ConnectionStrings": { "EmployeerDB": "Server=xxxxxx;User Id=sa;password=xxxxxx;Database=EmployeerDB;Trusted_Connection=True;"
   }
 ```
+
 >No arquivo Startup.cs:<br>
 ```
 services.AddDbContextPool<EmployeeContext>(
-      options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings")));
+      options => options.UseSqlServer(Configuration.GetConnectionString("EmployeerDB")));
 services.AddScoped<IEmployeeService, EmployeeService>();
 ```
 
